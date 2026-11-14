@@ -1,0 +1,90 @@
+/* 白天模式：提高代码块对比度，避免浅底浅字看不清 */
+
+:root {
+  --c-brand: #0f766e;
+  --c-brand-light: #14b8a6;
+  --code-bg-color: #f4f6f8;
+  --code-hl-bg-color: rgba(15, 118, 110, 0.08);
+  --code-ln-color: #6b7280;
+  --code-ln-wrapper-width: 2.75rem;
+}
+
+html.dark {
+  --code-bg-color: #0d1117;
+  --code-hl-bg-color: rgba(20, 184, 166, 0.12);
+  --code-ln-color: #8b949e;
+}
+
+/* 行内代码 */
+html:not(.dark) :not(pre) > code {
+  color: #0b4f4a !important;
+  background-color: #e8f3f1 !important;
+  border: 1px solid #c7e2dd;
+  padding: 0.12em 0.4em;
+  border-radius: 4px;
+}
+
+html.dark :not(pre) > code {
+  color: #99f6e4 !important;
+  background-color: #134e4a !important;
+  border: 1px solid #115e59;
+}
+
+/* 代码围栏：统一底色，Shiki 双主题用 CSS 变量切字色 */
+div[class*='language-'],
+.vp-code-group .tabs,
+div[class*='language-'] pre,
+div[class*='language-'] pre code,
+.vp-code-tab pre,
+.vp-code-tab pre code {
+  background-color: var(--code-bg-color) !important;
+}
+
+html:not(.dark) {
+  div[class*='language-'] .shiki,
+  div[class*='language-'] .shiki span {
+    color: var(--shiki-light, #1f2328) !important;
+    /* 避免浅色主题把整段字刷成接近背景的浅灰 */
+    font-weight: 500;
+  }
+
+  /* 无语言标记的纯文本块（bash/命令） */
+  div[class*='language-'] pre code {
+    color: #1f2328 !important;
+  }
+
+  /* 复制按钮在浅色底上可见 */
+  div[class*='language-'] .copy-code-button,
+  div[class*='language-'] button {
+    color: #374151 !important;
+    background: #ffffffcc !important;
+    border: 1px solid #d1d5db;
+  }
+}
+
+html.dark {
+  div[class*='language-'] .shiki,
+  div[class*='language-'] .shiki span {
+    color: var(--shiki-dark, #e6edf3) !important;
+  }
+
+  div[class*='language-'] pre code {
+    color: #e6edf3 !important;
+  }
+}
+
+/* 表格与提示在白天模式更清晰 */
+html:not(.dark) {
+  table {
+    border-collapse: collapse;
+  }
+
+  tr:nth-child(2n) {
+    background-color: #f8fafc;
+  }
+
+  th,
+  td {
+    border-color: #e2e8f0 !important;
+  }
+}

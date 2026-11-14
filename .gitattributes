@@ -1,0 +1,3 @@
+# 迁移目录必须 LF，否则 atlas.sum 校验失败
+server/migrations/**/*.sql text eol=lf
+server/migrations/**/atlas.sum text eol=lf
