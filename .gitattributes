@@ -1,0 +1,10 @@
+# 公共发行仓：削弱 GitHub 自动 Source code 归档（无法关闭入口本身）
+# 安装请用 Release Assets 具名文件，勿下 Source code zip/tar.gz
+* export-ignore
+.gitattributes export-ignore
+README.md -export-ignore
+docs/** -export-ignore
+doc/** -export-ignore
+LICENSE -export-ignore
+LICENSE.zh-CN.txt -export-ignore
+NOTICE -export-ignore
