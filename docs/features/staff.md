@@ -4,7 +4,7 @@
 
 ---
 
-![员工管理](/kazhan/images/admin-staff.png)
+![员工管理](../.vuepress/public/images/admin-staff.png)
 
 *界面说明：* 员工列表为主轴；行内「权限」改的是该员工所属**角色**（同角色全员生效）。另有「角色管理」抽屉、重置密码、启停账号。
 

@@ -57,8 +57,9 @@ const paymentSidebar: SidebarConfig = [{ text: '支付', children: paymentChildr
 const themeSidebar: SidebarConfig = [{ text: '主题', children: themeChildren }]
 const opsSidebar: SidebarConfig = [{ text: '运维', children: opsChildren }]
 
-// GitHub Pages / 自定义域名下的二级目录：https://…/kazhan/
-// public 静态资源在 Markdown 里必须写带 base 的绝对路径，否则会落到站点根目录 404。
+// GitHub Pages / 自定义域名二级目录。Markdown 图片请用相对路径指向
+// `.vuepress/public/images/...`（由 Vite 打包并自动带上 base），不要写 `/kazhan/images/...`
+//（会被当成模块解析导致构建失败），也不要只写 `/images/...`（运行时落到站点根目录 404）。
 const base = '/kazhan/'
 
 export default defineUserConfig({

@@ -1,7 +1,7 @@
 ---
 home: true
 title: 卡栈文档
-heroImage: /kazhan/logo.svg
+heroImage: /logo.svg
 heroText: 卡栈
 tagline: 发卡商城文档 — 安装、系统设置、功能与运维
 actions:

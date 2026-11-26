@@ -2,7 +2,7 @@
 
 ---
 
-![订单管理](/kazhan/images/admin-order.png)
+![订单管理](../.vuepress/public/images/admin-order.png)
 
 *界面说明：* 「订单列表 / 待发货」页签；按订单号或联系方式搜索；状态快捷筛选（待支付→已退款）。到账但系统仍待支付时可用「补单」手工推进（不向渠道查单）。
 

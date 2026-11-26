@@ -2,7 +2,7 @@
 
 后台左侧 **系统设置**。页面分 **外层五个页签**；日常改业务开关在「参数设置」里的左侧/顶部分组。
 
-![系统设置：参数设置 · 站点基础](/kazhan/images/settings-overview.png)
+![系统设置：参数设置 · 站点基础](../.vuepress/public/images/settings-overview.png)
 
 装完站请先按 [装完先配这些](./first-config.md) 走一遍必选项。菜单总览见 [后台菜单对照](./admin-map.md)。
 
@@ -119,7 +119,7 @@ SMTP（含 SSL/TLS、STARTTLS）、短信签名模板。DKIM 在发件域名 DNS
 
 ## 货币页签（外层）
 
-![货币管理](/kazhan/images/settings-currency.png)
+![货币管理](../.vuepress/public/images/settings-currency.png)
 
 | 能力 | 说明 |
 |---|---|

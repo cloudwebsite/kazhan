@@ -2,7 +2,7 @@
 
 后台 **内容管理**（`/content`）两个页签：
 
-![内容管理](/kazhan/images/admin-content.png)
+![内容管理](../.vuepress/public/images/admin-content.png)
 
 *界面说明：* 「文章管理」发公告/帮助文；「首页横幅」配 Banner。可管理栏目、筛选已发布/草稿。
 
