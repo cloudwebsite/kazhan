@@ -12,19 +12,32 @@
 
 | 你的情况 | 选这个 |
 |---|---|
-| 有一台 Linux 云服务器，想尽快跑起来 | **方式一：一键脚本**（推荐新手） |
-| 已经会用 Docker / 想一键带 MySQL+Redis | **方式二：Docker Compose** |
-| 已有宝塔 / 1Panel，习惯用面板守护进程 | **方式三：手动放二进制** |
+| 已装宝塔（单站或同机多家店） | **方式一：宝塔插件「卡栈部署」** |
+| 有一台 Linux 云服务器，不要面板 | **方式二：一键脚本** |
+| 已经会用 Docker / 想一键带 MySQL+Redis | **方式三：Docker Compose** |
+| 1Panel 或其他面板，习惯手写守护 | **方式四：手动放二进制** |
 
-方式一装完后打开 `https://你的域名/install`（内网 IP 则是 `http://IP/install`）。  
-方式二、方式三仍打开 `http://服务器IP:8000/install`。  
+装完打开 `http://你的域名/install`（内网 IP 或未绑域名时按面板提示）。  
 然后按向导创建管理员、站点名称和网址。
 
 同一台机器要开**多家互不相关的店**，或主站下多个白标分站，见 [同机多站点](./multi-site.md)。
 
 ---
 
-## 方式一：Linux 一键安装（推荐）
+## 方式一：宝塔插件「卡栈部署」
+
+1. 下载插件包：[kazhan_baota.zip](https://github.com/cloudwebsite/kazhan/raw/main/kazhan_baota.zip)（仓库根目录同名文件）。  
+2. 宝塔 → **软件商店** → **第三方应用 / 第三方插件** → **导入插件** → 选择该 zip。  
+3. 软件商店先装好 **Nginx**。打开「卡栈部署」；若还没有 **进程守护管理器**，按插件提示安装。  
+4. 填主域名（可加附加域名），运行目录默认 `/www/wwwroot/该域名`，启动用户默认 `www`，点部署。  
+5. 浏览器打开 `http://该域名/install` 完成向导。下一家店换域名再部署一次。
+
+插件界面示意见仓库 [README](https://github.com/cloudwebsite/kazhan#宝塔插件推荐有面板的服务器) 截图。  
+不要和「一键脚本」同时管同一套实例。
+
+---
+
+## 方式二：Linux 一键安装
 
 ### 需要什么
 
@@ -94,11 +107,11 @@ sudo env KAZHAN_INSTALL_DIR=/srv/kazhan KAZHAN_PORT=8080 \
 - 请先下载脚本再执行；不要 `curl | bash`，否则交互输入可能异常。  
 - 中断后再次 `install` 会从上次阶段继续。已经装完时不会覆盖密钥。  
 - 升级程序用 `update`。改域名或续签证书用 `configure-domain`、`renew-cert`。  
-- 宝塔请用面板插件「卡栈部署」，不要和本脚本同时管同一实例。
+- 已装宝塔时优先用方式一插件；不要和本脚本同时管同一实例。
 
 ---
 
-## 方式二：Docker Compose
+## 方式三：Docker Compose
 
 ### 需要什么
 
@@ -145,7 +158,9 @@ curl -fsS http://127.0.0.1:8000/health
 
 ---
 
-## 方式三：手动 / 宝塔 / 1Panel
+## 方式四：手动 / 1Panel
+
+宝塔请用 **方式一** 插件，不要手写守护重复造轮子。
 
 1. 从 [Releases](https://github.com/cloudwebsite/kazhan/releases) 下载对应架构二进制，核对 `SHA256SUMS`。  
 2. 放到目录，例如 `/opt/kazhan`：
@@ -168,7 +183,7 @@ chmod +x ./kazhan
 - 进程数：1  
 - 运行用户要能读写配置、数据和二进制目录
 
-不要同时用 systemd 和面板守护**同一套**实例。宝塔请安装面板插件「卡栈部署」。
+不要同时用 systemd 和面板守护**同一套**实例。
 
 也可用命令行安装：`./kazhan install -conf configs`（交互输入管理员与站点信息），装完仍需 `serve` 启动。
 

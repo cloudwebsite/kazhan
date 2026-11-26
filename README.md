@@ -4,25 +4,53 @@
 
 Go 单二进制交付，内含商城与管理后台。支持 SQLite、MySQL、PostgreSQL。
 
-## 下载与安装
+## 怎么装
 
-1. 打开 [Releases](https://github.com/cloudwebsite/kazhan/releases)，下载对应架构的具名文件：
-   - `kazhan-linux-amd64` / `kazhan-linux-arm64`
-   - 校验：`SHA256SUMS`
-2. **不要**下载 Release 页上的 Source code (zip/tar.gz) 当作安装包。
-3. 一键安装（Ubuntu 22.04+ / Debian 12+）。会询问域名和数据库；公网域名自动配置 Nginx 与证书。选择 MySQL 或 PostgreSQL 时，会在本机安装该数据库和 Redis，并创建库与账号：
+| 你的环境 | 怎么做 |
+|---|---|
+| **已装宝塔**（单站或同机多家店） | 下文本节「宝塔插件」 |
+| Ubuntu / Debian 裸机，不要面板 | 「一键脚本」 |
+| Docker | 见 [部署指南](https://cloudwebsite.github.io/kazhan/guide/deploy.html) |
+
+装完打开 `http://你的域名/install`（或 IP）完成向导。装完配置清单：[装完先配这些](https://cloudwebsite.github.io/kazhan/guide/first-config.html)。
+
+---
+
+## 宝塔插件（推荐有面板的服务器）
+
+插件名 **卡栈部署**：创建网站、反代、进程守护，按域名部署；同机多家店就再部署一次。
+
+### 使用方法
+
+1. 下载安装包：[kazhan_baota.zip](./kazhan_baota.zip)
+2. 打开宝塔 → **软件商店** → **第三方应用 / 第三方插件** → **导入插件**
+3. 选择刚下载的 `kazhan_baota.zip`，安装完成后打开插件「卡栈部署」
+4. 软件商店先装好 **Nginx**；若还没有 **进程守护管理器**，插件会按面板流程安装
+5. 填主域名（可加附加域名），运行目录默认 `/www/wwwroot/该域名`，启动用户默认 `www`
+6. 部署完成后浏览器打开 `http://该域名/install`
+
+<img src="doc/img/kazhan_baota.jpg" width="720" alt="卡栈部署插件界面">
+
+同机多站说明：[同机多站点](https://cloudwebsite.github.io/kazhan/guide/multi-site.html)。  
+不要和「一键脚本」同时管**同一套**实例。
+
+---
+
+## 一键脚本（无宝塔）
+
+从 [Releases](https://github.com/cloudwebsite/kazhan/releases) 下载 `kazhan-linux-amd64` / `arm64` 与 `SHA256SUMS`（**不要**用 Source code 压缩包）。  
+Ubuntu 22.04+ / Debian 12+：询问域名和数据库；公网域名会配 Nginx 与证书。选 MySQL 或 PostgreSQL 时，本机安装对应数据库和 Redis，并建库建账号。
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/cloudwebsite/kazhan/main/scripts/kazhan-install.sh -o /tmp/kazhan-install.sh
 sudo bash /tmp/kazhan-install.sh install
 ```
 
-4. 完整步骤见文档站 [部署指南](https://cloudwebsite.github.io/kazhan/guide/deploy.html)，或仓库内 [`doc/部署指南.md`](./doc/部署指南.md)。
-5. 装完配置清单：[装完先配这些](https://cloudwebsite.github.io/kazhan/guide/first-config.html)。
+完整步骤：[部署指南](https://cloudwebsite.github.io/kazhan/guide/deploy.html) · 仓库内 [`doc/部署指南.md`](./doc/部署指南.md)。
 
-在线更新默认探测本仓库 Release（签名清单 `update.json`）。
+国内访问 GitHub 较慢时，脚本会先走 `gh-proxy.com`、`ghfast.top`、`ghproxy.net`，失败再直连。终端不带参数会打开管理菜单。在线更新默认探测本仓库 Release（`update.json`）。
 
-国内访问 GitHub 较慢时，安装脚本会先走 `gh-proxy.com`、`ghfast.top`、`ghproxy.net`，失败再直连。终端里不带参数会打开管理菜单。宝塔请使用面板插件「卡栈部署」，不要和本脚本同时管理同一实例。
+---
 
 ## 前台主题
 
@@ -39,7 +67,7 @@ sudo bash /tmp/kazhan-install.sh install
 ## 文档
 
 - 文档站：https://cloudwebsite.github.io/kazhan/
-- 本仓库只含对外文档、精选说明与安装脚本；产品源码与 CI 构建在私有开发仓。
+- 本仓库只含对外文档、精选说明、安装脚本与宝塔插件包；产品源码与 CI 在私有开发仓。
 
 ## License
 
