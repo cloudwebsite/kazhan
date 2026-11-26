@@ -14,8 +14,9 @@
 |---|---|
 | 已装宝塔（单站或同机多家店） | **方式一：宝塔插件「卡栈部署」** |
 | 有一台 Linux 云服务器，不要面板 | **方式二：一键脚本** |
-| 已经会用 Docker / 想一键带 MySQL+Redis | **方式三：Docker Compose** |
-| 1Panel 或其他面板，习惯手写守护 | **方式四：手动放二进制** |
+| 1Panel 或其他面板，习惯手写守护 | **方式三：手动放二进制** |
+
+当前**暂不提供** Docker / 官方镜像安装。
 
 装完打开 `http://你的域名/install`（内网 IP 或未绑域名时按面板提示）。  
 然后按向导创建管理员、站点名称和网址。
@@ -111,54 +112,7 @@ sudo env KAZHAN_INSTALL_DIR=/srv/kazhan KAZHAN_PORT=8080 \
 
 ---
 
-## 方式三：Docker Compose
-
-### 需要什么
-
-- Docker Engine + Compose v2.20+
-- Git、Bash、OpenSSL、curl、Python 3
-- 能访问 GitHub Release 与 `ghcr.io`
-
-### 安装命令
-
-```bash
-git clone https://github.com/cloudwebsite/kazhan.git
-cd kazhan
-bash deploy/docker-install.sh
-```
-
-首次会生成 `deploy/.env`（含密钥和 MySQL 密码，权限 0600），并拉起卡栈 + 升级助手 + MySQL + Redis。
-
-### 打开安装向导时怎么填
-
-| 向导字段 | 填什么 |
-|---|---|
-| 数据库类型 | MySQL |
-| 主机 / 端口 | `mysql` / `3306` |
-| 用户 / 库名 | `kazhan` / `kazhan` |
-| 数据库密码 | `deploy/.env` 里的 `MYSQL_PASSWORD` |
-| Redis 地址 | `redis:6379` |
-| Redis 密码 | 留空 |
-
-注意：容器里的 `127.0.0.1` 是容器自己，**不能**当 Compose 里 MySQL/Redis 的地址。
-
-### 日常命令
-
-```bash
-cd deploy
-docker compose ps
-docker compose logs --tail 100 updater kazhan
-docker compose restart kazhan
-curl -fsS http://127.0.0.1:8000/health
-```
-
-官方单实例 Compose 支持后台「系统设置 → 在线更新」。细节见 [在线更新与回滚](../operations/update.md)。
-
-**千万不要**对还要保留的数据执行 `docker compose down -v`（`-v` 会删卷）。
-
----
-
-## 方式四：手动 / 1Panel
+## 方式三：手动 / 1Panel
 
 宝塔请用 **方式一** 插件，不要手写守护重复造轮子。
 
@@ -223,8 +177,8 @@ HTTPS：用面板证书或 `certbot`，证书签好后再强制跳转 HTTPS。
 | 部署方式 | 怎么更新 |
 |---|---|
 | 一键脚本 | `sudo bash /tmp/kazhan-install.sh update` |
+| 宝塔插件 | 插件内对应该域名更新 / 重启 |
 | 手动二进制 | 后台「系统设置 → 在线更新」，或 CLI `self-update` |
-| Docker 官方 Compose | 后台在线更新（需已接入升级助手） |
 
 更新前建议备份：配置 / `.env`、数据库、上传目录。  
 密钥丢失后旧卡密无法解密。完整说明见 [在线更新与回滚](../operations/update.md)。

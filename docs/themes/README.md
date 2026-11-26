@@ -61,7 +61,7 @@ my-store/
 3. 业务链接用 `/product/123` 这类站点根路径；API 用 `/api/v1/storefront/...`。  
 4. `/api`、`/uploads`、`/payments`、`/health`、`/install`、后台路径、`/templates` 由系统接管。
 
-主题文件落在工作目录 `data/themes/`；备份与 Docker 卷请带上该目录。
+主题文件落在工作目录 `data/themes/`；备份时请带上该目录。
 
 ### 发布前验收
 

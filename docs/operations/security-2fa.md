@@ -51,15 +51,6 @@ sudo ./kazhan admin reset-2fa --username 管理员登录名 --conf /opt/kazhan/c
 sudo ./kazhan admin reset-2fa --username 管理员登录名 --conf /opt/kazhan/configs
 ```
 
-**Docker Compose（在仓库根目录，沿用原项目名）：**
-
-```bash
-docker compose -f deploy/docker-compose.yml exec kazhan \
-  /kazhan admin reset-2fa --username 管理员登录名 --conf /app/configs --dry-run
-docker compose -f deploy/docker-compose.yml exec kazhan \
-  /kazhan admin reset-2fa --username 管理员登录名 --conf /app/configs
-```
-
 先 `--dry-run` 核对配置路径与数据库，避免解错站。成功后用原密码登录并重新绑定。
 
 SQLite 相对路径按**当前工作目录**解析，请在安装目录执行。

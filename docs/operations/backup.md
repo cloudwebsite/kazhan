@@ -7,13 +7,12 @@
 
 ## 必须一起备份的东西
 
-| 内容 | 一键脚本常见位置 | Docker 常见位置 |
-|---|---|---|
-| 配置与密钥 | `/opt/kazhan/configs/`、`kazhan.env` | `deploy/.env` + `/app/configs` |
-| 数据库 | SQLite 文件或 MySQL/PG dump | `mysql-data` 卷或外部库 dump |
-| 上传文件 | `data/uploads/` | `app-data` 卷内 `/app/data/uploads` |
-| 主题包 | `data/themes/` | 同上卷内 themes |
-| （Docker）助手状态 | — | `deploy/.docker-update/`（若使用在线更新） |
+| 内容 | 常见位置 |
+|---|---|
+| 配置与密钥 | `/opt/kazhan/configs/`、`kazhan.env`；宝塔站点目录下的 `configs/` |
+| 数据库 | SQLite 文件或 MySQL/PG dump |
+| 上传文件 | `data/uploads/` |
+| 主题包 | `data/themes/` |
 
 四把关键密钥（JWT 管理端/用户端、卡密、数据加密）丢失后，历史卡密与部分凭据 **无法解密**。不要为了「修复」去重新随机生成覆盖。
 
@@ -56,15 +55,6 @@ pg_dump -U用户 库名 > kazhan-$(date +%F).sql
 ```
 
 在线更新也会尝试自动备份；缺 `mysqldump`/`pg_dump` 时更新会中止。见 [在线更新](./update.md)。
-
----
-
-## Docker
-
-优先停机后再打数据卷归档，避免 MySQL 文件拷一半。  
-仓库部署指南与文档站部署文中有卷归档示例；恢复时使用 **匹配版本** 的 MySQL/镜像，并恢复同一份 `.env`。
-
-**禁止**对还要保留的数据执行 `docker compose down -v`。
 
 ---
 

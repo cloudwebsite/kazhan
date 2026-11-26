@@ -10,7 +10,8 @@ Go 单二进制交付，内含商城与管理后台。支持 SQLite、MySQL、Po
 |---|---|
 | **已装宝塔**（单站或同机多家店） | 下文本节「宝塔插件」 |
 | Ubuntu / Debian 裸机，不要面板 | 「一键脚本」 |
-| Docker | 见 [部署指南](https://cloudwebsite.github.io/kazhan/guide/deploy.html) |
+
+当前**暂不提供** Docker / 官方镜像安装，请用宝塔插件或一键脚本。
 
 装完打开 `http://你的域名/install`（或 IP）完成向导。装完配置清单：[装完先配这些](https://cloudwebsite.github.io/kazhan/guide/first-config.html)。
 

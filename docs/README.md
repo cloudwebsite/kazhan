@@ -13,7 +13,7 @@ actions:
     type: secondary
 features:
   - title: 部署与更新
-    details: 一键脚本 / Docker / 宝塔；在线更新、备份与回滚说明齐全
+    details: 宝塔插件 / 一键脚本；在线更新、备份与回滚说明齐全
   - title: 系统设置全览
     details: 站点、安全、通知、货币、货源、分站等后台分组对照表
   - title: 商品与订单

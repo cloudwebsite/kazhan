@@ -9,8 +9,8 @@
 | 安装方式 | 推荐操作 |
 |---|---|
 | 一键脚本 | `sudo bash /tmp/kazhan-install.sh update` |
-| 手动 / 宝塔二进制 | 后台「系统设置 → 系统更新」，或 CLI（见下） |
-| Docker 官方 Compose | 后台在线更新（需已接入升级助手） |
+| 宝塔插件 | 插件内对应该域名更新 / 重启；或后台「系统设置 → 系统更新」 |
+| 手动二进制 | 后台「系统设置 → 系统更新」，或 CLI（见下） |
 
 ### 后台
 
@@ -34,19 +34,7 @@ cd /opt/kazhan   # 改成你的安装目录
 - **宝塔 / supervisord**：CLI 更新后请在面板里重启进程。  
 - 多进程拆分部署时，面板在线更新可能禁用，请用 CLI 滚动各进程。
 
-### Docker
-
-官方单实例 Compose（含升级助手）可在后台点更新。  
-助手会验签、拉镜像、短暂停机备份后再切换。  
-
-尚未接入助手的旧 Docker 部署，在原目录执行：
-
-```bash
-git pull --ff-only
-KAZHAN_VERSION=最新版本号 bash deploy/docker-install.sh --online
-```
-
-以后日常仍走后台更新。不要用 `docker compose down -v` 清掉还要保留的数据卷。
+当前暂不提供 Docker / 官方镜像更新路径。
 
 ---
 
@@ -59,13 +47,11 @@ sudo apt install -y default-mysql-client   # MySQL
 sudo apt install -y postgresql-client     # PostgreSQL
 ```
 
-SQLite 由程序内置备份。Docker 官方助手按约定备份应用卷 / 内置 MySQL。
+SQLite 由程序内置备份。
 
 ---
 
 ## 回滚
-
-### 单二进制
 
 ```bash
 cd /opt/kazhan
@@ -74,8 +60,6 @@ sudo systemctl restart kazhan   # 若未自动重启
 ```
 
 若新程序本身无法启动，不能指望它执行 `--rollback`：停服务后，从 `backups/pre-*/kazhan.old` 或已校验的旧版发行文件恢复二进制再启动。
-
-### Docker
 
 后台「回退」仅在数据库结构兼容时可用，**不会**自动还原数据库或覆盖新订单。  
 结构已变或不明确时：先在隔离环境用备份验证，再决定是否恢复。
