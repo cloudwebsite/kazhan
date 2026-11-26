@@ -4,7 +4,7 @@
 
 ## 当前版本线
 
-- [v1.0.4](/releases/v1.0.4.html)
-- [v1.0.3](/releases/v1.0.3.html)
+- [v1.0.4](../releases/v1.0.4.md)
+- [v1.0.3](../releases/v1.0.3.md)
 
-安装与升级说明见 [部署指南](/guide/deploy.html) · [在线更新与回滚](/operations/update.html)。
+安装与升级说明见 [部署指南](../guide/deploy.md) · [在线更新与回滚](../operations/update.md)。

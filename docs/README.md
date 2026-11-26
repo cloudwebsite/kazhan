@@ -29,10 +29,10 @@ footer: Copyright (c) 2026 卡栈（kazhan）
 
 ## 推荐阅读路径
 
-1. [部署指南](/guide/deploy.html) → 装好并打开 `/install`
-2. [装完先配这些](/guide/first-config.html) → 站点地址、支付、商品
-3. [后台菜单对照](/guide/admin-map.html) · [系统设置全览](/guide/settings.html)
-4. [支付渠道字段手册](/payment/channels.html) · [商品与库存](/features/commerce.html) · [货源对接](/features/supply.html)
-5. 上线前：[备份与密钥](/operations/backup.html)
+1. [部署指南](guide/deploy.md) → 装好并打开 `/install`
+2. [装完先配这些](guide/first-config.md) → 站点地址、支付、商品
+3. [后台菜单对照](guide/admin-map.md) · [系统设置全览](guide/settings.md)
+4. [支付渠道字段手册](payment/channels.md) · [商品与库存](features/commerce.md) · [货源对接](features/supply.md)
+5. 上线前：[备份与密钥](operations/backup.md)
 
 下载发行包：[GitHub Releases](https://github.com/cloudwebsite/kazhan/releases)（请用具名 Assets，勿下 Source code）。
