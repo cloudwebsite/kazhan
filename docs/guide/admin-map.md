@@ -2,7 +2,7 @@
 
 按当前后台左侧菜单整理（权限不足时部分菜单/页签不可见）。
 
-![系统设置页示意](/images/settings-overview.png)
+![系统设置页示意](/kazhan/images/settings-overview.png)
 
 ---
 
@@ -49,47 +49,47 @@
 
 **运营概览** — KPI、趋势、支付方式分布与待办。
 
-![运营概览](/images/admin-home.png)
+![运营概览](/kazhan/images/admin-home.png)
 
 **商品管理** — 分类树 + 上架/库存筛选；卡密在「卡密库存」。
 
-![商品管理](/images/admin-product.png)
+![商品管理](/kazhan/images/admin-product.png)
 
 **订单管理** — 状态筛选、补单与待发货。
 
-![订单管理](/images/admin-order.png)
+![订单管理](/kazhan/images/admin-order.png)
 
 **营销管理** — 会员等级 / 优惠券 / 秒杀 / 抽奖 / 免费领取。
 
-![营销管理](/images/admin-marketing.png)
+![营销管理](/kazhan/images/admin-marketing.png)
 
 **支付渠道** — 添加驱动、启停与用途。
 
-![支付渠道](/images/admin-payment.png)
+![支付渠道](/kazhan/images/admin-payment.png)
 
 **钱包管理** — 流水、调账、提现审核、礼品卡。
 
-![钱包管理](/images/admin-wallet.png)
+![钱包管理](/kazhan/images/admin-wallet.png)
 
 **渠道管理** — 货源、健康评分、供货账号、采购与对账。
 
-![渠道管理](/images/admin-channel.png)
+![渠道管理](/kazhan/images/admin-channel.png)
 
 **工单管理** — 售前/售后工作台与 SLA。
 
-![工单管理](/images/admin-ticket.png)
+![工单管理](/kazhan/images/admin-ticket.png)
 
 **员工管理** — 账号、角色与行内权限。
 
-![员工管理](/images/admin-staff.png)
+![员工管理](/kazhan/images/admin-staff.png)
 
 **内容管理** — 文章公告与首页横幅。
 
-![内容管理](/images/admin-content.png)
+![内容管理](/kazhan/images/admin-content.png)
 
 **系统设置** — 参数 / 货币 / 审计 / 数据清理 / 更新。
 
-![系统设置](/images/settings-overview.png)
+![系统设置](/kazhan/images/settings-overview.png)
 
 ---
 

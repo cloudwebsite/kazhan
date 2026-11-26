@@ -2,7 +2,7 @@
 
 ---
 
-![钱包管理](/images/admin-wallet.png)
+![钱包管理](/kazhan/images/admin-wallet.png)
 
 *界面说明：* 账单流水、余额/流水、提现审核、礼品卡。先搜用户再看流水或调账；礼品卡明文仅创建时展示一次。
 

@@ -57,14 +57,18 @@ const paymentSidebar: SidebarConfig = [{ text: '支付', children: paymentChildr
 const themeSidebar: SidebarConfig = [{ text: '主题', children: themeChildren }]
 const opsSidebar: SidebarConfig = [{ text: '运维', children: opsChildren }]
 
+// GitHub Pages / 自定义域名下的二级目录：https://…/kazhan/
+// public 静态资源在 Markdown 里必须写带 base 的绝对路径，否则会落到站点根目录 404。
+const base = '/kazhan/'
+
 export default defineUserConfig({
-  base: '/kazhan/',
+  base,
   bundler: viteBundler(),
   lang: 'zh-CN',
   title: '卡栈',
   description: '卡栈文档 — 部署、系统设置、功能、支付、主题与运维',
   head: [
-    ['link', { rel: 'icon', href: '/logo.svg' }],
+    ['link', { rel: 'icon', href: `${base}logo.svg` }],
     ['meta', { name: 'theme-color', content: '#0f766e' }],
   ],
 

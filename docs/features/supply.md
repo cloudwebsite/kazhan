@@ -4,7 +4,7 @@
 
 ---
 
-![渠道管理](/images/admin-channel.png)
+![渠道管理](/kazhan/images/admin-channel.png)
 
 *界面说明：* 五个页签——货源渠道、健康评分、供货账号、采购单、明细对账。「货源渠道」里新增连接、测连通、采集同步与定时计划。
 
