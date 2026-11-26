@@ -12,36 +12,17 @@
 
 ## 方案 A：多实例（独立站点）
 
-每个站点各自拥有：安装目录、端口、数据库（或独立库名）、密钥、systemd 服务名（或独立 Compose 项目）。  
-前面用 Nginx / 宝塔按**域名**反代到不同端口。
+多家互不相干的店用宝塔插件 **卡栈部署**。每个域名点一次部署，得到自己的目录、端口、SQLite、密钥和进程守护。`kazhan-install.sh` 只装单站，不要拿它在同一台机器上重复装多站。
 
-### 一键脚本多站示例
+先在软件商店装好 Nginx。打开插件后：
 
-默认只适合单站。多站必须改目录、端口、unit 文件，且以后 `update` 也要带同一组变量：
+1. 若进程守护管理器还没装，插件会按面板流程安装。
+2. 填主域名（可加附加域名），运行目录默认 `/www/wwwroot/该域名`，启动用户默认 `www`。
+3. 插件下载程序、写入只监听本机的配置、创建网站并反代，再登记一条独立的守护进程。
+4. 浏览器打开 `http://该域名/install` 完成向导。
+5. 下一家店换一个域名，再部署一次。
 
-```bash
-# 站点 A
-sudo env \
-  KAZHAN_INSTALL_DIR=/opt/kazhan-a \
-  KAZHAN_PORT=8001 \
-  KAZHAN_UNIT_FILE=/etc/systemd/system/kazhan-a.service \
-  bash /tmp/kazhan-install.sh install --db sqlite
-
-# 站点 B
-sudo env \
-  KAZHAN_INSTALL_DIR=/opt/kazhan-b \
-  KAZHAN_PORT=8002 \
-  KAZHAN_UNIT_FILE=/etc/systemd/system/kazhan-b.service \
-  bash /tmp/kazhan-install.sh install --db sqlite
-```
-
-更新时同样带目录与 unit：
-
-```bash
-sudo env KAZHAN_INSTALL_DIR=/opt/kazhan-a \
-  KAZHAN_UNIT_FILE=/etc/systemd/system/kazhan-a.service \
-  bash /tmp/kazhan-install.sh update
-```
+各站默认 SQLite，数据在自己的 `data/kazhan.db`。Redis 用宝塔本机实例，队列前缀按站点分开，避免任务串到别的店。更新、重启都在插件里对应该域名操作。
 
 ### Docker 多站
 
@@ -50,8 +31,8 @@ sudo env KAZHAN_INSTALL_DIR=/opt/kazhan-a \
 
 ### 必须避免
 
-1. 不要共用同一安装目录或同一份配置。  
-2. 不要共用默认 `kazhan.service` 却不改 `KAZHAN_UNIT_FILE`。  
+1. 不要把两家店放进同一个运行目录或同一份配置。  
+2. 不要用 `kazhan-install.sh` 再装第二站。  
 3. 不要多站共用同一套卡密 / 数据加密密钥。  
 4. 反代必须把正确的 `Host` 传给后端。
 
@@ -86,4 +67,4 @@ sudo env KAZHAN_INSTALL_DIR=/opt/kazhan-a \
 | 数据隔离 | 强（分目录 / 分库） | 同行级（同库） |
 | 密钥 / 支付 | 可完全独立 | 共用进程密钥 |
 | 升级 | 逐站 | 一次 |
-| 默认安装脚本 | 要改 DIR/PORT/UNIT | 标准单站即可 |
+| 怎么装 | 宝塔插件，每个域名部署一次 | 一键脚本或插件装一套即可 |

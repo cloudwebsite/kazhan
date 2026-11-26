@@ -10,7 +10,7 @@ Go 单二进制交付，内含商城与管理后台。支持 SQLite、MySQL、Po
    - `kazhan-linux-amd64` / `kazhan-linux-arm64`
    - 校验：`SHA256SUMS`
 2. **不要**下载 Release 页上的 Source code (zip/tar.gz) 当作安装包。
-3. 一键安装脚本（仅下载与校验二进制）：
+3. 一键安装（Ubuntu 22.04+ / Debian 12+）。会询问域名和数据库；公网域名自动配置 Nginx 与证书。选择 MySQL 或 PostgreSQL 时，会在本机安装该数据库和 Redis，并创建库与账号：
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/cloudwebsite/kazhan/main/scripts/kazhan-install.sh -o /tmp/kazhan-install.sh
@@ -21,6 +21,20 @@ sudo bash /tmp/kazhan-install.sh install
 5. 装完配置清单：[装完先配这些](https://cloudwebsite.github.io/kazhan/guide/first-config.html)。
 
 在线更新默认探测本仓库 Release（签名清单 `update.json`）。
+
+国内访问 GitHub 较慢时，安装脚本会先走 `gh-proxy.com`、`ghfast.top`、`ghproxy.net`，失败再直连。终端里不带参数会打开管理菜单。宝塔请使用面板插件「卡栈部署」，不要和本脚本同时管理同一实例。
+
+## 前台主题
+
+内置 Classic，其余主题可安装。封面与后台主题卡片一致。
+
+| Classic | 综合商城 | 蓝曜商城 | 轻透卡片 |
+|---|---|---|---|
+| <img src="doc/img/Classic.jpg" width="220" alt="Classic"> | <img src="doc/img/mall.jpg" width="220" alt="综合商城"> | <img src="doc/img/blue-mart.jpg" width="220" alt="蓝曜商城"> | <img src="doc/img/anime-glass.jpg" width="220" alt="轻透卡片"> |
+
+| 暖橙轻享 | 极速发卡 | 风尚卡片 | 二次元馆 |
+|---|---|---|---|
+| <img src="doc/img/aurora.jpg" width="220" alt="暖橙轻享"> | <img src="doc/img/fast-card.jpg" width="220" alt="极速发卡"> | <img src="doc/img/card-style.jpg" width="220" alt="风尚卡片"> | <img src="doc/img/anime-2d.jpg" width="220" alt="二次元馆"> |
 
 ## 文档
 

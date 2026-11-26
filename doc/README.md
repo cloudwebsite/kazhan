@@ -17,4 +17,4 @@
 下载安装包请到：[Releases](https://github.com/cloudwebsite/kazhan/releases)  
 **请下载具名资源**（如 `kazhan-linux-amd64`），不要用页面上的 Source code zip/tar.gz 当安装包。
 
-公共仓安装脚本仅同步：`scripts/kazhan-install.sh`、`scripts/kazhan-install-baota.sh`（见源码仓 `scripts/README.md`）。
+公共仓安装脚本仅同步：`scripts/kazhan-install.sh`（见源码仓 `scripts/README.md`）。宝塔用面板插件「卡栈部署」。

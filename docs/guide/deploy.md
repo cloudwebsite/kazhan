@@ -16,12 +16,9 @@
 | 已经会用 Docker / 想一键带 MySQL+Redis | **方式二：Docker Compose** |
 | 已有宝塔 / 1Panel，习惯用面板守护进程 | **方式三：手动放二进制** |
 
-装好后统一做两件事：
-
-1. 浏览器打开 `http://服务器IP:8000/install`（端口若改过则用新端口）  
-2. 按向导创建管理员、站点名称和网址  
-
-生产环境建议再配域名 + Nginx/HTTPS（见下文）。
+方式一装完后打开 `https://你的域名/install`（内网 IP 则是 `http://IP/install`）。  
+方式二、方式三仍打开 `http://服务器IP:8000/install`。  
+然后按向导创建管理员、站点名称和网址。
 
 同一台机器要开**多家互不相关的店**，或主站下多个白标分站，见 [同机多站点](./multi-site.md)。
 
@@ -47,28 +44,28 @@ curl -fsSL https://raw.githubusercontent.com/cloudwebsite/kazhan/main/scripts/ka
 sudo bash /tmp/kazhan-install.sh install
 ```
 
-脚本会问用哪种数据库：
+脚本会问域名和数据库。支持 Ubuntu 22.04+、Debian 12+。
 
-| 选择 | 适合 | 还要准备什么 |
-|---|---|---|
-| **SQLite**（默认） | 试用、轻量站 | 无；不强制 Redis |
-| MySQL / PostgreSQL | 正式站、访问量大 | 事先装好数据库；还要 Redis |
+| 选择 | 安装器会做的事 |
+|---|---|
+| **SQLite** | 不安装数据库和 Redis，适合试用、小站 |
+| **MySQL** | 本机安装 MySQL 或 MariaDB，以及 Redis；创建库和账号 |
+| **PostgreSQL** | 本机安装 PostgreSQL 和 Redis；创建库和账号 |
 
-脚本**不会**帮你安装 MySQL / PostgreSQL 服务器本身。
+公网域名会安装 Nginx 并申请 Let's Encrypt。内网 IP 只做 HTTP，不申请证书。程序只监听 `127.0.0.1`，对外走 Nginx。库名和数据库账号按安装目录生成（默认 `kazhan`），密码写在配置里，安装过程不需要手填。
 
 已下载二进制时可离线指定本地文件：
 
 ```bash
-sudo bash /tmp/kazhan-install.sh install --bin ./kazhan-linux-amd64 --db sqlite
+sudo bash /tmp/kazhan-install.sh install --yes \
+  --domain shop.example.com --email ops@example.com --db sqlite --bin ./kazhan-linux-amd64
 ```
 
-非交互示例（密码含特殊字符时用单引号）：
+非交互安装 MySQL（安装器自己装数据库和 Redis）：
 
 ```bash
-sudo bash /tmp/kazhan-install.sh install --db mysql \
-  --db-host 127.0.0.1 --db-port 3306 --db-user kazhan \
-  --db-pass '替换成数据库密码' --db-name kazhan \
-  --redis 127.0.0.1:6379
+sudo bash /tmp/kazhan-install.sh install --yes \
+  --domain shop.example.com --email ops@example.com --db mysql
 ```
 
 ### 装完怎么管
@@ -87,21 +84,17 @@ sudo bash /tmp/kazhan-install.sh update
 
 ```bash
 sudo env KAZHAN_INSTALL_DIR=/srv/kazhan KAZHAN_PORT=8080 \
-  bash /tmp/kazhan-install.sh install --db sqlite
+  bash /tmp/kazhan-install.sh install --yes --domain shop.example.com --email ops@example.com --db sqlite
 ```
 
-| 变量 | 默认 | 用途 |
-|---|---|---|
-| `KAZHAN_VERSION` | `latest` | 首次下载的 Release 版本 |
-| `KAZHAN_PORT` | `8000` | HTTP 端口 |
-| `KAZHAN_INSTALL_DIR` | `/opt/kazhan` | 安装目录 |
-| `KAZHAN_GH_REPO` | `cloudwebsite/kazhan` | 下载来源仓库 |
+目录名请用小写字母、数字和连字符。
 
 ### 小提示
 
 - 请先下载脚本再执行；不要 `curl | bash`，否则交互输入可能异常。  
-- 已存在安装时，重复 `install` 会拒绝覆盖；升级请用 `update`。  
-- 脚本不自动配 Nginx / HTTPS。
+- 中断后再次 `install` 会从上次阶段继续。已经装完时不会覆盖密钥。  
+- 升级程序用 `update`。改域名或续签证书用 `configure-domain`、`renew-cert`。  
+- 宝塔请用面板插件「卡栈部署」，不要和本脚本同时管同一实例。
 
 ---
 
@@ -175,7 +168,7 @@ chmod +x ./kazhan
 - 进程数：1  
 - 运行用户要能读写配置、数据和二进制目录
 
-不要同时用 systemd 和面板守护**同一套**实例。
+不要同时用 systemd 和面板守护**同一套**实例。宝塔请安装面板插件「卡栈部署」。
 
 也可用命令行安装：`./kazhan install -conf configs`（交互输入管理员与站点信息），装完仍需 `serve` 启动。
 

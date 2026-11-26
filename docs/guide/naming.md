@@ -7,7 +7,7 @@
 | 卡栈 | 产品中文名（后台、页面、文档） |
 | kazhan | 英文短名：仓库、二进制、Compose 服务名 |
 | `cloudwebsite/kazhan` | 公共发行仓（下载、在线更新、文档站） |
-| `/opt/kazhan` | 一键脚本默认安装目录（宝塔脚本默认 `/www/server/kazhan`） |
+| `/opt/kazhan` | 一键安装器默认目录；同机多站可改 `KAZHAN_INSTALL_DIR` |
 | `KAZHAN_*` | 环境变量前缀（端口、密钥、版本等） |
 | `/admin` | 管理后台默认路径（可在配置里改） |
 | 协议码 `kazhan` | 本站对外供货协议 |
