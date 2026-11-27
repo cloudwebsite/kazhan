@@ -36,3 +36,5 @@ footer: Copyright (c) 2026 卡栈（kazhan）
 5. 上线前：[备份与密钥](operations/backup.md)
 
 下载发行包：[GitHub Releases](https://github.com/cloudwebsite/kazhan/releases)（请用具名 Assets，勿下 Source code）。
+
+遇到问题请到 [问题反馈](feedback.md) 按模板开 Issue。不要在反馈里粘贴密钥、卡密或后台账号。

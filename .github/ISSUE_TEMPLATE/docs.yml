@@ -1,0 +1,30 @@
+name: 文档问题
+description: 文档站或仓库说明看不懂、步骤过时、链接失效、和实际界面不一致
+title: "[文档] "
+body:
+  - type: input
+    id: page
+    attributes:
+      label: 哪一页
+      description: 贴上文档链接，或写出章节名。
+      placeholder: https://cloudwebsite.github.io/kazhan/guide/deploy.html
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: 问题类型
+      options:
+        - 步骤做不通
+        - 和当前界面不一致
+        - 链接失效或图片缺失
+        - 缺了该写的说明
+        - 表述难以理解
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: 哪里不对、希望改成什么
+    validations:
+      required: true

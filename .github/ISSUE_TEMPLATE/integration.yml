@@ -1,0 +1,52 @@
+name: 支付与货源
+description: 收款渠道回调、货源对接、导入任务或库存同步异常
+title: "[对接] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        先对照 [支付总览](https://cloudwebsite.github.io/kazhan/payment/) 或 [货源对接](https://cloudwebsite.github.io/kazhan/features/supply.html)。
+        只写渠道名称和现象。**不要**粘贴商户密钥、AppSecret、回调签名原文、上游账号密码、卡密。
+  - type: dropdown
+    id: kind
+    attributes:
+      label: 类型
+      options:
+        - 支付：下单或跳转失败
+        - 支付：已付款但订单未到账
+        - 支付：退款
+        - 货源：连接或余额
+        - 货源：导入 / 同步商品
+        - 货源：下单或发货失败
+        - 低库存或监控
+    validations:
+      required: true
+  - type: input
+    id: channel
+    attributes:
+      label: 渠道或货源名称
+      description: 用后台里显示的名称，例如虎皮椒、某开放平台。不要写密钥。
+      placeholder: 虎皮椒
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: 卡栈版本
+      placeholder: v1.0.18
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: 现象
+      description: 订单号可打码保留前后几位。写清：买家是否已付款、回调地址是否公网可访问、后台订单状态。
+    validations:
+      required: true
+  - type: textarea
+    id: log
+    attributes:
+      label: 打码后的关键日志（可选）
+      description: 删掉签名、密钥、卡密后再贴。
+    validations:
+      required: false

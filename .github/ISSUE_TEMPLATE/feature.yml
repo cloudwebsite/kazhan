@@ -1,0 +1,44 @@
+name: 功能建议
+description: 希望新增或改进商城、后台、支付、货源、主题或安装方式
+title: "[建议] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        说清你现在怎么做、卡在哪里。本仓库不含产品源码，建议会在后续版本里评估，不保证排期。
+  - type: dropdown
+    id: area
+    attributes:
+      label: 相关模块
+      options:
+        - 安装 / 更新
+        - 商品与发卡
+        - 订单
+        - 会员与营销
+        - 支付
+        - 货源
+        - 主题
+        - 多站点 / 分站
+        - 其它
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: 现在缺什么
+      description: 用你的店铺场景写，例如「上游改价后本店售价不会跟着变」。
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 希望怎么做
+    validations:
+      required: true
+  - type: textarea
+    id: extra
+    attributes:
+      label: 补充（可选）
+      description: 是否有替代做法、截图说明。不要上传含密钥或卡密的截图。
+    validations:
+      required: false

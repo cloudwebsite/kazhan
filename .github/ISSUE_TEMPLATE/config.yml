@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 先看文档
+    url: https://cloudwebsite.github.io/kazhan/
+    about: 部署、装完配置、支付、更新与备份。多数安装问题文档里已有步骤。
+  - name: 下载安装包
+    url: https://github.com/cloudwebsite/kazhan/releases
+    about: 请下具名资源（如 kazhan-linux-amd64）和 SHA256SUMS，不要用 Source code 压缩包当安装包。

@@ -1,0 +1,64 @@
+name: 安装与更新
+description: 宝塔插件、一键脚本、装站向导、在线更新或回滚失败
+title: "[安装] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        请先看 [部署指南](https://cloudwebsite.github.io/kazhan/guide/deploy.html) 和 [在线更新](https://cloudwebsite.github.io/kazhan/operations/update.html)。
+        **不要**粘贴数据库密码、支付密钥、卡密、Cookie、Token。日志里的密钥请打码。
+  - type: dropdown
+    id: method
+    attributes:
+      label: 安装方式
+      options:
+        - 宝塔插件「卡栈部署」
+        - 一键脚本（无宝塔）
+        - 在线更新 / 回滚
+        - 装站向导 /install
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: 版本号
+      description: 后台「关于」或发行包文件名里的版本，例如 v1.0.18。未知可填「未知」。
+      placeholder: v1.0.18
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: 系统与架构
+      placeholder: Ubuntu 22.04 x86_64 / 宝塔 9.x
+    validations:
+      required: true
+  - type: dropdown
+    id: database
+    attributes:
+      label: 数据库
+      options:
+        - SQLite
+        - MySQL
+        - PostgreSQL
+        - 还没选到这一步
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: 卡在哪一步
+      description: 你做了什么、屏幕或终端最后几行说了什么。
+      placeholder: |
+        1. 导入 kazhan_baota.zip
+        2. 填域名后点部署
+        3. 提示：……
+    validations:
+      required: true
+  - type: textarea
+    id: tried
+    attributes:
+      label: 已经试过
+      placeholder: 重装 Nginx、换了域名、看了部署指南第 x 节
+    validations:
+      required: false

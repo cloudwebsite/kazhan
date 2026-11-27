@@ -105,6 +105,7 @@ export default defineUserConfig({
       { text: '主题', children: themeChildren },
       { text: '运维', children: opsChildren },
       { text: '更新日志', link: '/changelog/' },
+      { text: '问题反馈', link: '/feedback.html' },
     ],
 
     sidebar: {
@@ -125,6 +126,7 @@ export default defineUserConfig({
           children: [...themeChildren, ...opsChildren],
         },
         { text: '更新日志', link: '/changelog/' },
+        { text: '问题反馈', link: '/feedback.html' },
       ],
     },
     sidebarDepth: 2,

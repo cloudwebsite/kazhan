@@ -22,6 +22,7 @@ Windows 也可双击 `bin/run.cmd` / `bin/package.cmd`。
 | 产品名 | 卡栈 / kazhan；勿写旧产品出处品牌 |
 | 对接品牌 | 支付 / 货源等第三方名称可保留 |
 | 发行说明 | changelog 只挂当前 v1.0 线 |
+| 问题反馈 | 仓库根 `.github/ISSUE_TEMPLATE/`；文档入口 `feedback.md` |
 
 ## 文档结构（对外）
 

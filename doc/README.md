@@ -18,3 +18,5 @@
 **请下载具名资源**（如 `kazhan-linux-amd64`），不要用页面上的 Source code zip/tar.gz 当安装包。
 
 公共仓安装脚本仅同步：`scripts/kazhan-install.sh`（见源码仓 `scripts/README.md`）。宝塔用面板插件「卡栈部署」。
+
+安装失败、运行故障、支付或货源对接、文档勘误、功能建议：[开 Issue 并选模板](https://github.com/cloudwebsite/kazhan/issues/new/choose)。不要粘贴密钥、卡密或后台账号。

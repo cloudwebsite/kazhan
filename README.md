@@ -70,6 +70,12 @@ sudo bash /tmp/kazhan-install.sh install
 - 文档站：https://cloudwebsite.github.io/kazhan/
 - 本仓库只含对外文档、精选说明、安装脚本与宝塔插件包；产品源码与 CI 在私有开发仓。
 
+## 问题反馈
+
+安装失败、运行故障、支付或货源对接、文档勘误、功能建议，请开 [Issue](https://github.com/cloudwebsite/kazhan/issues/new/choose) 并选用对应模板。
+
+不要在 Issue 里粘贴数据库密码、支付/货源密钥、卡密或后台账号。说明见 [问题反馈](https://cloudwebsite.github.io/kazhan/feedback.html)。
+
 ## License
 
 见 [`LICENSE`](./LICENSE) / [`LICENSE.zh-CN.txt`](./LICENSE.zh-CN.txt)。
